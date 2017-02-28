@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../style/images/favicon.png">
+<title>Lumos</title>
+<!-- Bootstrap core CSS -->
+<link href="../style/css/bootstrap.min.css" rel="stylesheet">
+<link href="../style/css/plugins.css" rel="stylesheet">
+<link href="../style/css/prettify.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link href="../style/css/color/blue.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,800,700,600,500,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
+<link href="../style/type/fontello.css" rel="stylesheet">
+<link href="../style/type/budicons.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="../style/js/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+  <script src="../assets/bower_components/angular/angular.js"></script>
+  <script src="../assets/bower_components/angular-route/angular-route.min.js"></script>
+
+  <script src="../assets/app.js"></script>
+  <script src="../assets/factories/userFactory.js"></script>
+  <script src="../assets/controllers/userController.js"></script>
+</head>
+<body class="full-layout" ng-controller="userController as meep">
+<div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+<div class="body-wrapper" style="-ms-transform: scale(0.60, 0.60); /* IE 9 */
+     -webkit-transform: scale(0.60, 0.60); /* Safari */
+    transform: scale(0.60, 0.60); margin-top: -70%;">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header"> <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
+      <div class="navbar-brand text-center"> <a href="/client/index.html"><img src="../style/images/logo.png" alt="" data-src="style/images/logo.png" data-ret="style/images/logo@2x.png" class="retina" /></a> </div>
+      <!-- /.navbar-brand --> 
+    </div>
+    <!-- /.navbar-header -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#portfolio">Portfolio</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="current"><a href="../index.html">Elements</a></li>
+        <li><a href="#elsewhere" class="fancybox-inline" data-fancybox-width="1100" data-fancybox-height="1100"><i class="icon-heart-1"></i><span>Elsewhere</span></a></li>
+      </ul>
+      <!-- /.navbar-nav --> 
+    </div>
+    <!-- /.navbar-collapse -->
+    <div id="elsewhere" style="display:none;">
+      <!--<h1 style="padding-top: 500px">Im right fucking here!{{meep.user.name}}</h1>-->
+      <h1>Hey You... Login?</h1>
+      <div class="divide30"></div>
+      <div class="form-container">
+        <div class="response alert alert-success"></div>
+        <form class="forms">
+          <fieldset>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-row text-input-row name-field">
+                  <label>Name</label>
+                  <input ng-model='meep.user.name' type="text" class="text-input defaultText required"/>
+                  <!--<input ng-model='meep.user.name' type="text" name="name" class="text-input defaultText required"/>-->
+                </div>
+                <div class="form-row text-input-row email-field">
+                  <label>Email</label>
+                  <input ng-model='meep.user.email' type="text" class="text-input defaultText required email"/>
+                  <!--<input ng-model='meep.user.email' type="text" name="email" class="text-input defaultText required email"/>-->
+                  <div class="form-row text-input-row name-field">
+                    <label>Password</label>
+                    <!--<input ng-model='meep.user.password' type="text" name="name" class="text-input defaultText required"/>-->
+                    <input ng-model='meep.user.password' type="text" class="text-input defaultText required"/>
+                    <div class="col-sm-6" style="margin-left: 53%">
+                      <div class="button-row pull-right">
+                        <!--<input ng-click='meep.loginuser()' type="submit" value="Login into Existing" name="submit" class="btn btn-submit bm0" />-->
+                        <input ng-click='meep.loginuser()' type="submit" value="Login into Existing" name="submit" class="btn btn-submit bm0" />
+                      </div>
+                    </div>
+                    <div class="col-sm-6" style="margin-left: 53%; padding-top: 3%;">
+                      <div class="button-row pull-right">
+                        <input ng-click='meep.adduser()' type="submit" value="Create User" name="submit" class="btn btn-submit bm0" />
+                        <!--<input ng-click='meep.adduser()' type="submit" value="Create User" name="submit" class="btn btn-submit bm0" />-->
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+    <!-- /#elsewhere --> 
+  </nav>
+  <!-- /.navbar -->
+  
+  <div class="page">
+  <div class="container">
+    <section id="about">
+      <div class="box">
+        <h2 class="section-title">Who is Behind All This {{meep.user.name}}</h2>
+        <div class="row">
+          <div class="col-md-5 col-md-push-7 col-sm-12">
+            <figure class="frame"><img src="../style/images/art/about.jpg" alt="" /></figure>
+          </div>
+          <!-- /column -->
+          <div class="col-md-7 col-md-pull-5 col-sm-12">
+            <p class="lead">Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna. </p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus. </p>
+            <p>Tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p>Fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Aenean lacinia bibendum nulla.</p>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+        <div class="clearfix"></div>
+        <div class="divide40"></div>
+        <h2 class="section-title">My Services</h2>
+        <div class="divide10"></div>
+        <div class="services-1">
+          <div class="row">
+            <div class="col-md-4 col-sm-6">
+              <div class="icon"> <i class="budicon-statistic icn"></i> </div>
+              <!-- /.icon -->
+              <div class="text">
+                <h5>Full Scale Data Analytics</h5>
+                <p>Nulla vitae libero, a pharetra augue. Integer posuere a ante venenatis condimentum. Donec id elit non mi.</p>
+              </div>
+              <!-- /.text -->
+            </div>
+            <!-- /column -->
+            <div class="col-md-4 col-sm-6">
+              <div class="icon"> <i class="budicon-fire icn"></i> </div>
+              <!-- /.icon -->
+              <div class="text">
+                <h5>Front-end Web Design</h5>
+                <p>Vestibulum id ligula porta euismod semper. Aenean lacinia bibendum vestibulum. Cum sociis natoque.</p>
+              </div>
+              <!-- /.text -->
+            </div>
+            <!-- /column -->
+            <div class="col-md-4 col-sm-6">
+              <div class="icon"> <i class="budicon-gameboy icn"></i> </div>
+              <!-- /.icon -->
+              <div class="text">
+                <h5>Algorithms</h5>
+                <p>Aenean eu leo quam. Pellente ornare sem lacinia quam venenatis vestibulum sagittis montes, nascetur ridiculus mus.</p>
+              </div>
+              <!-- /.text -->
+            </div>
+            <!-- /column -->
+            <div class="divide30"></div>
+            <div class="col-md-4 col-sm-6">
+              <div class="icon"> <i class="budicon-code icn"></i> </div>
+              <!-- /.icon -->
+              <div class="text">
+                <h5>Robust Back-end Development</h5>
+                <p>Fusce dapibus commodo, tortor mauris condimentum nibh, ut fermentum massa. Maecenas sed diam eget risus.</p>
+              </div>
+              <!-- /.text -->
+            </div>
+            <!-- /column -->
+            <div class="col-md-4 col-sm-6">
+              <div class="icon"> <i class="budicon-monitor icn"></i> </div>
+              <!-- /.icon -->
+              <div class="text">
+                <h5>Industry Standard Code Design</h5>
+                <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis sit amet non magna sit amet.</p>
+              </div>
+              <!-- /.text -->
+            </div>
+            <!-- /column -->
+            <div class="col-md-4 col-sm-6">
+              <div class="icon"> <i class="budicon-setting icn"></i> </div>
+              <!-- /.icon -->
+              <div class="text">
+                <h5>Machine Learning Solutions</h5>
+                <p>Morbi leo risus, porta ac consectetur ac at eros. Cras mattis consectetur purus. Cras mattis consectetur purus.</p>
+              </div>
+              <!-- /.text -->
+            </div>
+            <!-- /column -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.services -->
+
+      </div>
+      <div class="divide20" ></div>
+
+      <div class="comment-form-wrapper box" ng-repeat="x in meep.chases_messages">
+        <div style = "border: solid 1px; padding: 10px">
+          <p>Name: {{x.name}} Email: {{x.email}}</p>
+          <p>Subject: {{x.subject}}</p>
+          <p>Message:</p>
+          <p>{{x.message}}</p>
+        </div>
+
+
+      </div>
+      <div class="divide20"></div>
+
+      <div class="comment-form-wrapper box">
+        <h3>Would you like add a topic?</h3>
+        <p>Your email address will not be published. Required fields are marked *</p>
+        <form class="comment-form" name="form_name" action="#" method="post">
+          <div class="name-field">
+            <input type="text" name="first" title="Name*" value="Topic"/>
+          </div>
+          <div class="email-field">
+            <input type="text" name="first" title="Email*" value="Category" />
+          </div>
+          <div class="website-field">
+            <input type="text" name="first" title="Website" value="Photo"/>
+          </div>
+          <div class="website-field">
+            <input type="file" name="myFile" title="Website" value="Photo maybe"/>
+          </div>
+          <div class="message-field">
+            <textarea name="textarea" id="textarea" rows="5" cols="30" title="Enter your comment here..."></textarea>
+          </div>
+          <input type="submit" value="Submit" name="submit" class="btn btn-submit" />
+        </form>
+      </div>
+
+      <!-- /.comment-form-wrapper -->
+
+  </div>
+      <!-- /.box -->
+    </section>
+    <!-- /#about -->
+	<!-- /section -->
+  </div>
+  <!-- /.container -->
+  </div>
+  <!-- /.page -->
+</div>
+<!-- /.body-wrapper --> 
+<script src="../style/js/jquery.min.js"></script>
+<script src="../style/js/bootstrap.min.js"></script>
+<script src="../style/js/jquery.themepunch.tools.min.js"></script>
+<script src="../style/js/classie.js"></script>
+<script src="../style/js/plugins.js"></script>
+<script src="../style/js/scripts.js"></script>
+<script>
+	$.backstretch(["../style/images/art/background4.1.jpg"]);
+</script>
+</body>
+</html>

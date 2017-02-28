@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html  ng-app="myApp" lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="style/images/favicon.png">
+    <title>SureFire</title>
+    <!-- Bootstrap core CSS -->
+    <link href="style/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/css/plugins.css" rel="stylesheet">
+    <link href="style/css/prettify.css" rel="stylesheet">
+    <link href="assets/style.css" rel="stylesheet">
+    <link href="style/css/color/blue.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,800,700,600,500,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
+    <link href="style/type/fontello.css" rel="stylesheet">
+    <link href="style/type/budicons.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--&lt;!&ndash;[if lt IE 9]>-->
+    <!--<script src="style/js/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+    <script src="assets/bower_components/angular/angular.js"></script>
+    <script src="assets/bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="assets/app.js"></script>
+    <script src="assets/factories/userFactory.js"></script>
+    <script src="assets/controllers/userController.js"></script>
+
+
+</head>
+
+<body  class="full-layout" >
+<!--shrink everything but the background!-->
+<!--<div style="-ms-transform: scale(0.7, 0.7); /* IE 9 */-->
+     <!-- -webkit-transform: scale(0.7, 0.7); /* Safari */-->
+    <!--transform: scale(0.7, 0.7);">-->
+
+
+<div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+<div class="body-wrapper">
+
+    <nav class="navbar navbar-default" role="navigation" style="-ms-transform: scale(0.60, 0.60); /* IE 9 */
+     -webkit-transform: scale(0.60, 0.60); /* Safari */
+    transform: scale(0.60, 0.60);">
+        <div class="navbar-header"> <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse" ><i></i></a>
+            <div class="navbar-brand text-center" ><a href="index.html" ></a></div>
+            <!--<div class="navbar-brand text-center"> <a href="index.html"><img src="style/images/logo.png" alt="" data-src="style/images/logo.png" data-ret="style/images/logo@2x.png" class="retina" /></a> </div>-->
+
+            <!-- /.navbar-brand -->
+        </div>
+        <!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav">
+                <!--<li class="current"><a href="#home">Home</a></li>-->
+                <li class="current"><a href="index.html">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!--<li><a href="assets/blog.html">Blog</a></li>-->
+                <!--<li><a href="assets/profile_page.html">Login</a></li>-->
+                <!--<li><a href="#elsewhere" class="fancybox-inline" data-fancybox-width="1100" data-fancybox-height="1100"><i class="icon-heart-1"></i><span>Elsewhere</span></a></li>-->
+            </ul>
+            <!-- /.navbar-nav -->
+        </div>
+        <!-- /.navbar-collapse -->
+        <div id="elsewhere" style="display:none;" ng-controller="userController as meep" >
+            <!--<h1 style="padding-top: 500px">Im right fucking here!{{meep.user.name}}</h1>-->
+            <h1>Hey You... Login?</h1>
+            <div class="divide30"></div>
+            <div class="form-container">
+                <div class="response alert alert-success"></div>
+                <form class="forms" name="da_form">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-row text-input-row name-field">
+                                    <label>Name</label>
+                                    <input ng-model='meep.user.name' type="text" class="text-input defaultText required"/>
+                                    <!--<input ng-model='meep.user.name' type="text" name="name" class="text-input defaultText required"/>-->
+                                </div>
+                                <div class="form-row text-input-row email-field">
+                                    <label>Email</label>
+                                    <input ng-model='meep.user.email' type="text" class="text-input defaultText required email"/>
+                                    <!--<input ng-model='meep.user.email' type="text" name="email" class="text-input defaultText required email"/>-->
+                                    <div class="form-row text-input-row name-field">
+                                        <label>Password</label>
+                                        <!--<input ng-model='meep.user.password' type="text" name="name" class="text-input defaultText required"/>-->
+                                        <input ng-model='meep.user.password' type="text" class="text-input defaultText required"/>
+                                        <div class="col-sm-6" style="margin-left: 53%">
+                                            <div class="button-row pull-right">
+                                                <!--<input ng-click='meep.loginuser()' type="submit" value="Login into Existing" name="submit" class="btn btn-submit bm0" />-->
+                                                <input ng-click='meep.loginuser()' type="submit" value="Login into Existing" name="submit" class="btn btn-submit bm0" href="blog.html" onChange="$.fancybox.close().$setPristine();" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6" style="margin-left: 53%; padding-top: 3%;">
+                                            <div class="button-row pull-right">
+                                                <input ng-click='meep.adduser()' type="submit" value="Create User" name="submit" class="btn btn-submit bm0" onChange="$.fancybox.close().$setPristine();"  />
+                                                <!--<input ng-click='meep.adduser()' type="submit" value="Create User" name="submit" class="btn btn-submit bm0" />-->
+                                            </div>
+                                            <p ng-repeat='error in meep.loginErrors'>{{error}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            </div>
+        </div>
+        <!-- /#elsewhere -->
+    </nav>
+    <!-- /.navbar -->
+
+    <section id="home" class="naked" >
+        <div class="fullscreenbanner-container revolution">
+            <div class="fullscreenbanner">
+                <ul>
+                    <li data-transition="fade"> <img src="style/images/dummy.png"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="repeat">
+                        <h1 class="tp-caption caption large sfb" data-x="center" data-y="center" data-voffset="-25" data-speed="900" data-start="1000" data-endspeed="100" data-easing="Sine.easeOut">Hello! My name is Chase Scheu</h1>
+                        <div class="tp-caption small tp-fade fadeout tp-resizeme" data-x="center" data-y="center" data-voffset="25" data-speed="100"
+                             data-start="1500"
+                             data-easing="Power4.easeOut"
+                             data-splitin="chars"
+                             data-splitout="chars"
+                             data-elementdelay="0.03"
+                             data-endelementdelay="0"
+                             data-endspeed="100"
+                             data-endeasing="Power1.easeOut"
+                             style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">specializing full stack web development</div>
+                        <div class="arrow smooth"><a href="#portfolio"><i class="icon-down-open-big"></i></a></div>
+                    </li>
+                </ul>
+                <div class="tp-bannertimer"></div>
+            </div>
+            <!-- /.fullscreenbanner -->
+        </div>
+        <!-- /.revolution -->
+    </section>
+    <!-- /#home -->
+    <div class="container" style="-ms-transform: scale(0.60, 0.60); /* IE 9 */
+     -webkit-transform: scale(0.60, 0.60); /* Safari */
+    transform: scale(0.60, 0.60); margin-top: -50%;">
+        <section id="portfolio" class="portfolio">
+            <div class="box">
+                <h2 class="section-title pull-left">From My Portfolio</h2>
+                <div id="filters-container" class="cbp-l-filters-alignRight pull-right">
+                    <div data-filter="*" class="cbp-filter-item-custom-active cbp-filter-item-custom btn">All</div>
+                    <div data-filter=".architecture" class="cbp-filter-item-custom btn">MEAN Stack</div>
+                    <div data-filter=".macro" class="cbp-filter-item-custom btn">Python/Django</div>
+                    <div data-filter=".still-life" class="cbp-filter-item-custom btn">Algorithms </div>
+                </div>
+                <!-- /#filters-container -->
+                <div class="clearfix"></div>
+                <div id="grid-container" class="cbp-l-grid-masonry">
+                    <ul>
+                        <li class="cbp-item frame still-life"> <a class="cbp-caption cbp-singlePage" href="assets/ajax/algo1.html">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/algo_perm1.png" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title">Python Permutaions Algo</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li class="cbp-item frame still-life"> <a class="cbp-caption cbp-singlePage" href="assets/ajax/algo_RNE.html">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/RNE_algo1.png" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title">RNF Algo</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li class="cbp-item frame architecture"> <a class="cbp-caption cbp-singlePage" href="assets/ajax/post3.html">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/background3.jpg" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title">Portfolio Project Details</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li class="cbp-item frame architecture "> <a class="cbp-caption cbp-singlePage" href="assets/ajax/mean1.1.html">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/mini2.png" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title">Mini-Managment System</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li class="cbp-item frame still-life"> <a class="cbp-caption cbp-singlePage" href="assets/ajax/algo2.html">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/algo_secret4.png" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title">Python Triplets Algo </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li class="cbp-item frame still-life"> <a class="cbp-caption cbp-singlePage" href="assets/ajax/algo_lcs.html" style="width: 170%;height: 50%">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/algo_lcs_7.png" alt="" style="width: 70%;height: 50%"> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title" style="margin-left: -40%">LCS Algo</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li class="cbp-item frame macro"> <a class="cbp-caption cbp-singlePage" href="assets/ajax/django.html" style="width: 170%;">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/angular_2.png" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title" style="margin-left: -40%">Django RESTful API</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li class="cbp-item frame still-life"> <a class="cbp-caption cbp-singlePage" href="assets/ajax/algo_sum.html"  style="width: 150%;">
+                            <div class="cbp-caption-defaultWrap"> <img src="style/images/art/algo_sum_1.png" alt=""> </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-title" style="margin-left: -35%">Sum by Factors Algo</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a> </li>
+                    </ul>
+                </div>
+                <!-- /.cbp-l-grid-masonry -->
+                <!--<div class="cbp-l-loadMore-button"> <a href="assets/ajax/port1-more.html" class="cbp-l-loadMore-button-link btn">LOAD MORE</a> </div>-->
+            </div>
+            <!-- /.box -->
+        </section>
+        <!-- /#portfolio -->
+
+        <section id="about">
+            <div class="box">
+                <h2 class="section-title">Who is Behind All This</h2>
+                <div class="row">
+                    <div class="col-md-5 col-md-push-7 col-sm-12">
+                        <figure class="frame"><img src="style/images/art/chase.jpeg" alt="" /></figure>
+                    </div>
+                    <!-- /column -->
+                    <div class="col-md-7 col-md-pull-5 col-sm-12">
+                        <p class="lead">My name is Chase Scheu and I have a passion for web development and innovative projects. </p>
+                        <p style="font-size: 21px;text-align: justify">I graduated from Metropolitan State University in 2015 and have been activily pursuing a career in technology since. I love all things code. I graduated from Coding Dojo's Full Stack Immersive program in December of 2016.</p>
+                        <p style="font-size: 21px;text-align: justify">My idea of a good time is playing code golf with some friends. I love competing to solve complex problems with simple, beautiful, and well-structered alogorithms. There is something sexy about clean code. If you're a member of codewars.com feel free to check out my completed algorithms. My profile name is dreadnought1177.</p>
+                        <p style="font-size: 21px ;text-align: justify">I currently reside in Salt Lake City, and if I'm not behind my laptop, you will find me in the mountains somewhere. My heart is in the wild; and backpacking, snowboarding and canyoneering rank as my all time favortie things to do. </p>
+                    </div>
+                    <!-- /column -->
+                </div>
+                <!-- /.row -->
+                <div class="clearfix"></div>
+                <div class="divide40"></div>
+                <h2 class="section-title">My Services</h2>
+                <div class="divide10"></div>
+                <div class="services-1">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="icon"> <i class="budicon-statistic icn"></i> </div>
+                            <!-- /.icon -->
+                            <div class="text">
+                                <h5>Full Stack Web Development</h5>
+                                <p style="font-size: 17px">I can do it from the front and the back. I like all my work to be attractive not only to look at, but also to run lean and light.</p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /column -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="icon"> <i class="budicon-fire icn"></i> </div>
+                            <!-- /.icon -->
+                            <div class="text">
+                                <h5>Front-end Web Design</h5>
+                                <p style="font-size: 17px">CSS3, HTML5, jQuery, AJAX, and Angular.JS.... I can do that.</p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /column -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="icon"> <i class="budicon-gameboy icn"></i> </div>
+                            <!-- /.icon -->
+                            <div class="text">
+                                <h5>Languages</h5>
+                                <p style="font-size: 17px">Python is my favorite language. There is nothing better than a nice clean block of Python. I am also proficient in PHP and Javascript. </p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /column -->
+                        <div class="divide30"></div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="icon"> <i class="budicon-code icn"></i> </div>
+                            <!-- /.icon -->
+                            <div class="text">
+                                <h5 >Robust Back-end Development</h5>
+                                <p style="font-size: 17px">My list of databases scope: SQL(MySQL, SQLite, SQL server), NoSQL(MongoDB), Mongoose. My server work includes Apache and Node.JS.</p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /column -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="icon"> <i class="budicon-monitor icn"></i> </div>
+                            <!-- /.icon -->
+                            <div class="text">
+                                <h5>Industry Standard Code Design</h5>
+                                <p style="font-size: 17px">My list of methodologies include: OOP - Object Oriented Programming, MVC, RESTful Architecture, Agile, Scrum.</p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /column -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="icon"> <i class="budicon-setting icn"></i> </div>
+                            <!-- /.icon -->
+                            <div class="text">
+                                <h5>Frameworks</h5>
+                                <p style="font-size: 17px">Django, Flask, Bootstrap, Angular, Express/socket.io </p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /column -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.services -->
+
+            </div>
+            <!-- /.box -->
+        </section>
+        <!-- /#about -->
+
+        <section id="contact">
+            <div class="box">
+                <h2 class="section-title">Get in Touch with Me</h2>
+                <p style="font-size: 21px">Thanks for checking out my portfolio! I enjoy connecting with people all across the world and collaborating on new ideas or interesting topics. If you would like to see more of my work, or simply connect, please reach out to me through the information provided below, or leave a comment. I am always open to exploring freelance work and side jobs. If you are interested in collaborating, just reach out.</p>
+                <p style="font-size: 21px">Looking forward to connecting!</p>
+                <div class="divide20"></div>
+                <div class="row text-center services-2">
+                    <div class="col-md-3 col-sm-6"> <i class="budicon-map"></i>
+                        <p style="font-size: 19px">737 East 700 South<br />
+                            Salt Lake City, Utah 84102</p>
+                    </div>
+                    <div class="col-md-3 col-sm-6"> <i class="budicon-network"></i>
+                        <p style="font-size: 19px">00 (123) 456 78 90 <br />
+                            00 (987) 654 32 10 </p>
+                    </div>
+                    <div class="col-md-3 col-sm-6"> <i class="budicon-mobile"></i>
+                        <p style="font-size: 19px">(805) 358 6051 <br />
+                             (801) 995 0590 </p>
+                    </div>
+                    <div class="col-md-3 col-sm-6"> <i class="budicon-mail"></i>
+                        <p style="font-size: 19px"> <a class="nocolor" href="mailto:#">chasescheu@gmail.com</a> <br />
+                            <a class="nocolor" href="mailto:#">chsbxtr@gmail.com</a> </p>
+                    </div>
+                </div>
+                <!-- /.services-2 -->
+                <div class="divide30"></div>
+                <div class="form-container" ng-controller="userController as meep">
+                    <div class="response alert alert-success"></div>
+                    <form class="forms" action="contact/form-handler.php" method="post">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-row text-input-row name-field">
+                                        <label>Name</label>
+                                        <input ng-model='meep.messenger.name' type="text" name="name" class="text-input defaultText required"/>
+                                    </div>
+                                    <div class="form-row text-input-row email-field">
+                                        <label>Email</label>
+                                        <input ng-model='meep.messenger.email' type="text" name="email" class="text-input defaultText required email"/>
+                                    </div>
+                                    <div class="form-row text-input-row subject-field">
+                                        <label>Subject</label>
+                                        <input ng-model='meep.messenger.subject' type="text" name="subject" class="text-input defaultText"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 lp5">
+                                    <div class="form-row text-area-row">
+                                        <label>Message</label>
+                                        <textarea ng-model='meep.messenger.message' name="message" class="text-area required"></textarea>
+                                    </div>
+                                    <div class="form-row hidden-row">
+                                        <input type="hidden" name="hidden" value="" />
+                                    </div>
+                                    <div class="nocomment">
+                                        <label for="nocomment">Leave This Field Empty</label>
+                                        <input id="nocomment" value="" name="nocomment" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="button-row pull-right">
+                                        <input ng-click='meep.send_messenger(meep.messenger)' type="submit" value="Send Message" name="submit" class="btn btn-submit bm0" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 lp5">
+                                    <div class="button-row pull-left">
+                                        <input type="reset" value="Clear Message" name="reset" class="btn btn-submit bm0" />
+                                    </div>
+                                </div>
+                                <input type="hidden" name="v_error" id="v-error" value="Required" />
+                                <input type="hidden" name="v_email" id="v-email" value="Enter a valid email" />
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- /.form-container -->
+
+            </div>
+            <!-- /.box -->
+        </section>
+        <!-- /#contact -->
+
+        <footer class="footer box">
+            <p class="pull-left"><a href="assets/profile_page.html">Chase Scheu SureFire Web Services.</a></p>
+            <ul class="social pull-right">
+                <li><a href="#"><i class="icon-s-rss"></i></a></li>
+                <li><a href="#"><i class="icon-s-twitter"></i></a></li>
+                <li><a href="#"><i class="icon-s-facebook"></i></a></li>
+                <li><a href="#"><i class="icon-s-dribbble"></i></a></li>
+                <li><a href="#"><i class="icon-s-pinterest"></i></a></li>
+                <li><a href="#"><i class="icon-s-instagram"></i></a></li>
+                <li><a href="#"><i class="icon-s-vimeo"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer -->
+    </div>
+<!-- /.body-wrapper -->
+<script src="style/js/jquery.min.js"></script>
+<script src="style/js/bootstrap.min.js"></script>
+<script src="style/js/jquery.themepunch.tools.min.js"></script>
+<script src="style/js/classie.js"></script>
+<script src="style/js/plugins.js"></script>
+<script src="style/js/scripts.js"></script>
+<script>
+    $.backstretch(["style/images/art/background1.4.jpg"]);
+</script>
+</body>
+</html>
